@@ -1,7 +1,7 @@
 import requests
-from app.config import GROQ_API_KEY
+from config import GROQ_API_KEY
 
-def chat_llm(context , question):
+def ask_llm(context , question):
     url = "https://api.groq.com/openai/v1/chat/completions"
     api_key = GROQ_API_KEY
 
@@ -12,9 +12,9 @@ def chat_llm(context , question):
 
     body = {
         "model": "llama3-70b-8192",
-        "meassages":
+        "meassages":[
             {"role": "syetem" , "content": "You are AI assistant. Use the context to answer claerly and also give theme of the document."},
-            {"role": "user" , "content": f"Content: {content}\n\nQuestion: {question}"}
+            {"role": "user" , "content": f"Content: {content}\n\nQuestion: {question}"}   
             ],
             "temperature": 0.3
     }
