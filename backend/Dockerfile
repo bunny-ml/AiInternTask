@@ -17,4 +17,4 @@ RUN pip install -r backend/requirements.txt
 EXPOSE 5000
 
 # run flask app
-CMD [ "python" "backend/app/main.py"]
+CMD [ "python" ,"backend/app/main.py"]
