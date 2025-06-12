@@ -1,5 +1,5 @@
 import requests
-from config import GROQ_API_KEY
+from backend.app.config.config import GROQ_API_KEY
 
 def ask_llm(context , question):
     url = "https://api.groq.com/openai/v1/chat/completions"

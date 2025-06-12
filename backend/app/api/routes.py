@@ -1,9 +1,13 @@
-from flask import Blueprint , request , jsonify
-from core.ocr import extract_text_from_file
-from services.groq_llm import ask_llm
+from flask import Blueprint , request , jsonify , render_template
+from backend.app.utils.ocr_engine import extract_text_from_file
+from backend.app.services.chat_llm import ask_llm
 
 
 api_blueprint = Blueprint("api", __name__)
+
+@api_blueprint.route("/")
+def home():
+    return "flask is runnig on streamlit"
 
 @api_blueprint.route("/upload" , methods= ["POST"])
 def upload_file():
@@ -16,7 +20,7 @@ def upload_file():
     return jsonify({"text":text})
 
 
-api_blueprint.route("/ask" , methods=["POST"])
+@api_blueprint.route("/ask" , methods=["POST"])
 def ask_question():
     data = request.json
     question = data.get("question")
